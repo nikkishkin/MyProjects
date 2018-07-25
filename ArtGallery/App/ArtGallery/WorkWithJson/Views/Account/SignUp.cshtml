@@ -1,0 +1,30 @@
+﻿@using WorkWithJson.Controllers
+@model WorkWithJson.Models.Account.SignUpModel
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+@{
+    using (Html.BeginForm(AccountController.SignUpAction, AccountController.ControllerName, FormMethod.Post, new { id = "centralSignUpForm" }))
+    {
+        @Html.LabelFor(x => x.Username)<br>
+        @Html.TextBoxFor(x => x.Username, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.FirstName)<br>
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.LastName)<br>
+        @Html.TextBoxFor(x => x.LastName, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.Password)<br>
+        @Html.PasswordFor(x => x.Password, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.Email)<br>
+        @Html.TextBoxFor(x => x.Email, new { @class = "textInput" })
+        <br><br>
+        @Html.HiddenFor(x => x.ReturnPageNumber)
+        <input type="submit" value="Sign up" class="btn" name="submit_authorize">
+        @Html.ValidationSummary(false)
+    }
+}

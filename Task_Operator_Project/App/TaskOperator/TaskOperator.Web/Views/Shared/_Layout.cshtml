@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @*<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>*@
+</head>
+<body>
+<div class="overlay" id="loading">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+<div id="page-cover"></div>
+<div id="taskPlaceholder"></div>
+@RenderBody()
+
+@*@Scripts.Render("~/bundles/jquery")*@
+@RenderSection("scripts", required: false)
+</body>
+</html>

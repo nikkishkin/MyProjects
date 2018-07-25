@@ -1,0 +1,146 @@
+﻿(function() {
+    $(document).ready(function() {
+        $("#logInForm").hide();
+        $("#signUpForm").hide();
+
+        $("#popupLogInBtn").click(showPopupHandler);
+        $("#popupSignUpBtn").click(showPopupHandler);
+
+        $.ajaxSetup({
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            complete: function () {
+                $('#loading').hide();
+            }
+        });
+    });
+
+    function showPopupHandler(event) {
+        event.stopPropagation();
+        $(document).click(hidePopupHandler);
+
+        if (event.target.id === "popupLogInBtn") {
+            if ($("#popupSignUpBtn").is(":visible")) {
+                $("#signUpForm").hide();
+            }
+            $("#logInForm").show();
+            $("#popupLogInBtn").off("click", showPopupHandler);
+        } else {
+            // event.target.id === "#popupSignUpBtn"
+            if ($("#popupLogInBtn").is(":visible")) {
+                $("#logInForm").hide();
+            }         
+            $("#signUpForm").show();
+            $("#popupSignUpBtn").off("click", showPopupHandler);
+        }
+    }
+
+    function hidePopupHandler(event) {
+
+        if ($(event.target).closest("#authPlaceholder").length === 0) {
+            // hide
+            $("#logInForm").hide();
+            $("#signUpForm").hide();
+
+            $(document).off("click", hidePopupHandler);
+
+            $("#popupLogInBtn").click(showPopupHandler);
+            $("#popupSignUpBtn").click(showPopupHandler);
+        }
+    }
+
+    function onLogInSuccess(response) {
+        if (response.indexOf("validation-summary-errors") > -1)
+            return;
+
+        $("#logInForm").hide();
+        $(document).off("click", hidePopupHandler);
+        $("#popupLogInBtn").hide();
+        $("#popupSignUpBtn").hide();
+
+        $("#logOutForm").show();
+
+        $.ajax({
+            url: "/Tasks/GetTasks",
+            type: "Post",
+            //data: "id=" + id,
+            success: function (response) {
+                $("#pageContent").html(response);
+            }
+        });
+        //$(".validation-summary-errors").html("Server error!!!");
+    }
+
+    function onSignUpSuccess(response) {
+        if (response.indexOf("validation-summary-errors") > -1)
+            return;
+
+        $("#signUpForm").hide();
+        $(document).off("click", hidePopupHandler);
+        $("#popupLogInBtn").hide();
+        $("#popupSignUpBtn").hide();
+
+        $("#logOutForm").show();
+
+        $.ajax({
+            url: "/Tasks/GetTasks",
+            type: "Post",
+            //data: "id=" + id,
+            success: function (response) {
+                $("#pageContent").html(response);
+            }
+        });
+        //$(".validation-summary-errors").html("Server error!!!");
+    }
+
+    function onLogOutSuccess(response) {
+        $("#logOutForm").hide();
+
+        $("#popupLogInBtn").show();
+        $("#popupSignUpBtn").show();
+
+        $("#popupLogInBtn").click(showPopupHandler);
+        $("#popupSignUpBtn").click(showPopupHandler);
+
+        $("#logInForm").find("input[type=text]").val("");
+        $("#signUpForm").find("input[type=text]").val("");
+
+        $.ajax({
+            url: "/Home/GetIntro",
+            type: "Post",
+            //data: "id=" + id,
+            success: function (response) {
+                $("#pageContent").html(response);
+            }
+        });
+    }
+
+    function onAddTaskSuccess(response) {
+        if (response.indexOf("validation-summary-errors") > -1)
+            return;
+
+        $.ajax({
+            url: "/Tasks/GetTasks",
+            type: "Post",
+            //data: "id=" + id,
+            success: function (response) {
+                $("#pageContent").html(response);
+            }
+        });
+    }
+
+    function dimBackground() {
+        $("#page-cover").css("opacity", 0.6).fadeIn(300, function () {
+            //Attempting to set/make #red appear upon the dimmed DIV
+            $("#taskPlaceholder").css({ 'display': "block", 'z-index': 9999 });
+            //$("#taskPlaceholder").css("zIndex", 10000);
+        });
+    }
+
+    window.onLogInSuccess = onLogInSuccess;
+    window.onSignUpSuccess = onSignUpSuccess;
+    window.onLogOutSuccess = onLogOutSuccess;
+    window.onAddTaskSuccess = onAddTaskSuccess;
+    window.dimBackground = dimBackground;
+})();

@@ -1,0 +1,191 @@
+﻿#header {
+    height: 50px;
+    background-color: #D0D0D0;
+    vertical-align: middle;
+}
+
+.btn {
+    border: none;
+    padding: 4px;
+}
+
+#modeBtn, #logInBtn, #signUpBtn {
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+    background-color: white;
+    padding: 4px;
+    /*margin-right: 20px;*/
+}
+
+#modeBtn {
+    margin-right: 25px;
+}
+
+#signUpForm {
+    position: fixed;
+    /*width: 120px;*/
+    /* height: 100px; */
+    right: 128px;
+    top: 46px;
+    background-color: white;
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+#logInForm {
+    position: fixed;
+    /*width: 120px;*/
+    /* height: 100px; */
+    right: 191px;
+    top: 46px;
+    background-color: white;
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+#modeForm {
+    position: fixed;
+    /*width: 120px;*/
+    /* height: 100px; */
+    right: 30px;
+    top: 46px;
+    background-color: white;
+    border: 1px solid;
+    padding: 10px;
+    display: none;
+}
+
+.pagingForm {
+    display: inline;
+}
+
+input.pagingLink {
+    background-color: white;
+    border: none;
+    padding: 0;
+}
+
+input#next {
+    margin-left: -4px;
+}
+
+input#previous {
+    margin-right: -4px;
+}
+
+.pagingLink {
+    text-decoration: none;
+    color: #003399;
+    font-size: 15px;
+}
+
+.pagingLink:hover{
+    cursor: pointer;
+}
+
+#pageDescription {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#exhibitList {
+    display: none;
+}
+
+#pager {
+    position: fixed;
+    bottom: 30px;
+    width: 200px;
+    margin-left: -100px;
+    left: 50%;
+    text-align: center;
+
+    display: none;
+}
+
+.picture {
+    max-width: 286px;
+    max-height: 432px;
+}
+
+.description {
+    text-align: center;
+}
+
+#exhibitList li {
+    display: inline;
+    float: left;
+    margin: 20px;
+    width: 286px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*-----------------------------------------------------------*/
+
+body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}

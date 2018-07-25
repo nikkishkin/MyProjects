@@ -1,0 +1,10 @@
+﻿@using TaskOperator.Web.Controllers
+
+@{
+    AjaxOptions logOutOptions = TaskOperatorController.GetAjaxOptions("logOutForm",
+        Url.Action(AccountController.LogOutAction, AccountController.ControllerName), "onLogOutSuccess");
+    using (Ajax.BeginForm(null, null, logOutOptions, new { id = "logOutForm" }))
+    {
+        <input type="submit" value="Log out" name="submit_logout" class="btn" id="logOutBtn">
+    }
+}

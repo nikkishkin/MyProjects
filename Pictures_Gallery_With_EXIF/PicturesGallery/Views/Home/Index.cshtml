@@ -1,0 +1,277 @@
+﻿@using PicturesGallery.Models
+@model IEnumerable<PictureViewModel>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div id="container">
+
+    <div id="inner-container">
+
+        <div id="images-list">
+            @foreach (PictureViewModel picture in Model)
+            {
+                if (picture.IsSelected)
+                {
+                    <img src="~/Images/@picture.FileName" class="pic-list selected" id="@picture.Id" tabindex="0">
+                }
+                else
+                {
+                    <img src="~/Images/@picture.FileName" class="pic-list" id="@picture.Id" tabindex="0">
+                }
+                <span style="display: none">@picture.Description</span>
+            }
+        </div>
+
+    @{
+        PictureViewModel selectedPicture = Model.SingleOrDefault(p => p.IsSelected);
+        if (Model.Any() && selectedPicture != null)
+        {
+            <div id="image-with-desc">
+                <div id="placeholder">
+                    <img src="~/Images/@selectedPicture.FileName">
+                </div>
+
+                <span id="desc-label">User image description:</span>
+                <a href="" id="edit-desc">(edit)</a>
+                <a href="" id="save-desc" style="display: none">save</a>
+
+                <div id="desc">
+                    <span>@selectedPicture.Description</span>
+                </div>
+
+                @using (Html.BeginForm("SaveDescription", "Home", FormMethod.Post,
+                    new {id = "save-desc-form"}))
+                {
+                    <input type="text" name="description" id="desc-input" value="@selectedPicture.Description"/>
+                    <input type="hidden" name="id" value="@selectedPicture.Id.ToString()"/>
+                    <input type="submit" value="Save" class="submit"/>
+                }
+            </div>
+
+            <div id="image-info">
+                <h3>Image Information:</h3>
+                <div id="image-info-fields">
+                    @if (selectedPicture.MetaData.MetadataExists == "true")
+                    {
+                        if (selectedPicture.MetaData.EquipmentManufacturer != null)
+                        {
+                            <span>Manufacturer: @selectedPicture.MetaData.EquipmentManufacturer</span><br>
+                        }
+                        if (selectedPicture.MetaData.EquipmentModel != null)
+                        {
+                            <span>Model: @selectedPicture.MetaData.EquipmentModel</span><br>
+                        }
+                        if (selectedPicture.MetaData.ExposureTime != null)
+                        {
+                            <span>Exposure time: @selectedPicture.MetaData.ExposureTime</span><br>
+                        }
+                        if (selectedPicture.MetaData.DateTaken != null)
+                        {
+                            <span>Date taken: @selectedPicture.MetaData.DateTaken</span><br>
+                        }
+                        if (selectedPicture.MetaData.ExifVersion != null)
+                        {
+                            <span>EXIF version: @selectedPicture.MetaData.ExifVersion</span>
+                        }
+                    }
+                    else
+                    {
+                        <span>Image does not have any data</span>
+                    }
+                </div>
+            </div>
+
+            if (selectedPicture.MetaData.LatitudeLongitude != null)
+            {
+                <div id="map-container">
+                    <img id="map" tabindex="0" src="@String.Concat("https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBmH-XDabYPMOPSvnKcNYv5-RfRgsm2pA0&size=300x300&zoom=16&markers=", selectedPicture.MetaData.LatitudeLongitude)">
+                    <ul>
+                        <li><input type="button" value="Zoom In" id="zoom-in" /></li>
+                        <li><input type="button" value="Zoom Out" id="zoom-out" /></li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div id="map-container" style="display: none">
+                    <img id="map" tabindex="0" src="" >
+                    <ul>
+                        <li><input type="button" value="Zoom In" id="zoom-in" /></li>
+                        <li><input type="button" value="Zoom Out" id="zoom-out" /></li>
+                    </ul>                
+                </div>
+            }
+        }
+        else
+        {
+            <div id="image-with-desc">
+                <div id="placeholder">
+                    <img src="">
+                </div>
+
+                <span id="desc-label" style="display: none">User image description:</span>
+                <a href="" id="edit-desc" style="display: none">(edit)</a>
+                <a href="" id="save-desc" style="display: none">save</a>
+
+                <div id="desc">
+                    <span></span>
+                </div>
+
+                @using (Html.BeginForm("SaveDescription", "Home", FormMethod.Post,
+                    new {id = "save-desc-form"}))
+                {
+                    <input type="text" name="description" id="desc-input"/>
+                    <input type="hidden" name="id"/>
+                    <input type="submit" value="Save" class="submit"/>
+                }
+            </div>
+
+            <div id="image-info" style="display: none">
+                <h3>Image Information:</h3>
+                <div id="image-info-fields"></div>
+            </div>
+
+            <div id="map-container" style="display: none">
+                <img id="map" tabindex="0" src="" >
+                <ul>
+                    <li><input type="button" value="Zoom In" id="zoom-in" /></li>
+                    <li><input type="button" value="Zoom Out" id="zoom-out" /></li>
+                </ul>
+            </div>
+        }
+}
+
+    </div>
+
+    <div id="upload-form-container">
+        @using (Html.BeginForm("UploadPicture", "Home", FormMethod.Post,
+            new {enctype = "multipart/form-data", id = "upload-form"}))
+        {
+            <input type="file" name="file" id="file"/>
+            <input type="hidden" name="selectedId"/>
+            <input type="submit" value="Upload Image" class="submit"/>
+        }
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(".pic-list").on("click", function(e) {
+            $("#images-list img").removeClass("selected");
+            $(e.target).addClass("selected");
+
+            $("#placeholder img").attr("src", $(e.target).attr("src"));
+            $("#desc span").html($(e.target).next().html());
+
+            $("#desc-label").show();
+            $("#desc span").show();
+            $("#edit-desc").show();
+            $("#image-info").show();
+            $("#save-desc-form").hide();
+            $("#map-container").hide();
+
+            var id = $(e.target).attr("id");
+            $("#save-desc-form input[name='id']").val(id);
+            $("#save-desc-form input[name='description']").val($(e.target).next().html());
+            $("#upload-form input[name='selectedId']").val(id);
+
+            var homeIndex = window.location.href.toLowerCase().lastIndexOf("home");
+            var urlBeginning;
+            if (homeIndex < 0) {
+                urlBeginning = window.location.href + "/Home";
+            } else {
+                urlBeginning = window.location.href.slice(0, homeIndex + 4);
+            }
+            var url = urlBeginning + "/GetPictureMetadata/" + id;
+
+            $.get(url, function(response) {
+                $("#image-info-fields").html("");
+
+                if (!response.MetadataExists) {
+                    $("#image-info-fields").append("<span>Image does not have any data</span>");
+                    return;
+                }
+
+                if (response.EquipmentManufacturer) {
+                    $("#image-info-fields").append("<span>Manufacturer: " + response.EquipmentManufacturer + "</span><br>");
+                }
+                if (response.EquipmentModel) {
+                    $("#image-info-fields").append("<span>Model: " + response.EquipmentModel + "</span><br>");
+                }
+                if (response.ExposureTime) {
+                    $("#image-info-fields").append("<span>Exposure Time: " + response.ExposureTime + "</span><br>");
+                }
+                if (response.DateTaken) {
+                    $("#image-info-fields").append("<span>Date taken: " + response.DateTaken + "</span><br>");
+                }
+                if (response.ExifVersion) {
+                    $("#image-info-fields").append("<span>EXIF version: " + response.ExifVersion + "</span>");
+                }
+
+                if (response.LatitudeLongitude) {
+                    $("#map").attr("src", "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBmH-XDabYPMOPSvnKcNYv5-RfRgsm2pA0&size=300x300&zoom=16&markers=" + response.LatitudeLongitude);
+                    $("#map-container").show();
+                }
+            });
+
+            return false;
+        });
+
+        $("#edit-desc").on("click", function(e) {
+            $("#desc span").hide();
+            $("#edit-desc").hide();
+            $("#save-desc-form").show();
+            return false;
+        });
+
+        $(".pic-list").keydown(function(e) {
+            if (e.which == 39 && $(e.target).nextAll(".pic-list")) {
+                var $nextPicture = $(e.target).nextAll(".pic-list").first();
+                $nextPicture.focus();
+                $nextPicture.click();
+            } else if (e.which == 37 && $(e.target).prevAll(".pic-list")) {
+                var $prevPicture = $(e.target).prevAll(".pic-list").first();
+                $prevPicture.focus();
+                $prevPicture.click();
+            }
+        });
+
+        $("#zoom-in").click(function(e) {
+            zoomMap(+1);
+        });
+
+        $("#zoom-out").click(function(e) {
+            zoomMap(-1);
+        });
+
+        $("#map").on("mousewheel", function(e) {
+            zoomMap(e.deltaY);
+        });
+
+        function zoomMap(delta) {
+            var mapSrc = $("#map").attr("src");
+            var zoomParameterStr = mapSrc.match("zoom=[0-9]*")[0];
+            var zoomValue = parseInt(zoomParameterStr.substr(5));
+
+            var newMapSrc;
+            if (delta > 0) {
+                newMapSrc = mapSrc.replace(zoomParameterStr, "zoom=" + (zoomValue + 1));
+                $("#map").attr("src", newMapSrc);
+            } else if (delta < 0 && zoomValue > 0) {
+                newMapSrc = mapSrc.replace(zoomParameterStr, "zoom=" + (zoomValue - 1));
+                $("#map").attr("src", newMapSrc);
+            }
+        }
+
+        $(window).on("mousewheel", function(e) {
+            console.log(e);
+            if ($(document.activeElement).attr("id") === "map") {
+                e.preventDefault();
+            }
+        });
+    </script>
+}

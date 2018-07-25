@@ -1,0 +1,32 @@
+﻿@using TaskOperator.Web.Controllers
+@model TaskOperator.Web.Models.Account.SignUpModel
+
+@{
+    AjaxOptions signUpOptions = TaskOperatorController.GetAjaxOptions("signUpForm",
+        Url.Action(AccountController.SignUpAction, AccountController.ControllerName), "onSignUpSuccess");
+    using (Ajax.BeginForm(null, null, signUpOptions, new { id = "signUpForm" }))
+    {
+        @Html.LabelFor(x => x.Username)<br>
+        @Html.TextBoxFor(x => x.Username, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.FirstName)<br>
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.LastName)<br>
+        @Html.TextBoxFor(x => x.LastName, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.Password)<br>
+        @Html.PasswordFor(x => x.Password, new { @class = "textInput" })
+        <br>
+        @Html.LabelFor(x => x.Email)<br>
+        @Html.TextBoxFor(x => x.Email, new { @class = "textInput" })
+        <br><br>
+        @Html.CheckBoxFor(x => x.IsManager)
+        @Html.LabelFor(x => x.IsManager)
+        <br><br>
+        <input type="submit" value="Sign up" class="btn" name="submit_authorize" id="signUpBtn">
+        @Html.ValidationSummary(false)
+    }
+}
+
+

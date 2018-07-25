@@ -1,0 +1,15 @@
+﻿using TaskOperator.Core;
+using TaskOperator.Core.DependencyResolving;
+using TaskOperator.DAL.UnitOfWork;
+using TaskOperator.Entities;
+
+namespace TaskOperator.DAL.Configuration
+{
+    public static class DependencyConfig
+    {
+        public static void Configure()
+        {
+            DependencyResolver.Register<IUnitOfWork>(() => new EntityFrameworkUnitOfWork(new TaskOperatorEntities()));
+        }
+    }
+}

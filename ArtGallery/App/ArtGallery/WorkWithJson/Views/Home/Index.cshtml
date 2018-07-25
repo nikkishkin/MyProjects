@@ -1,0 +1,70 @@
+﻿@using WorkWithJson.Controllers
+@using WorkWithJson.Models.Account
+@model WorkWithJson.Models.Home.ExhibitListModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<span id="auth">@ViewBag.IsAuthorized</span>
+
+<div id="header">
+
+    <img src="@Url.Content("~/Content/artforum-logo.png")" id="logo">
+
+    <button class="btn" id="modeBtn">Choose mode</button>
+
+    @if (!ViewBag.IsAuthorized)
+    {
+        @Html.ActionLink("Sign up", AccountController.SignUpAction, AccountController.ControllerName, new { returnPageNumber = Model.PageNumber }, new { @class = "btn", id = "signUpBtn" })
+        @Html.ActionLink("Log in", AccountController.LogInAction, AccountController.ControllerName, new { returnPageNumber = Model.PageNumber }, new { @class = "btn", id = "logInBtn" })
+        
+        @*<button class="btn" id="signUpBtn">Sign up</button>
+        <button class="btn" id="logInBtn">Log in</button>*@
+    }
+
+    <form action="@Url.Action(AccountController.LogOutAction, AccountController.ControllerName)" method="post" id="logOutForm">
+        <input type="submit" value="Log out" name="submit_logout" class="btn" id="logOutBtn">
+    </form>
+
+    <form id="modeForm">
+        <input type="radio" name="mode" value="Partial" checked> Partial view<br>
+        <input type="radio" name="mode" value="Json"> Json
+    </form>
+
+    @{
+        Html.RenderPartial("~/Views/Account/_LogIn.cshtml", new LogInModel());
+        Html.RenderPartial("~/Views/Account/_SignUp.cshtml", new SignUpModel());
+    }
+</div>
+
+<div id="leftMenu">
+    <a href="#" class="menuItem">Home</a>
+    <a href="#" class="menuItem">About</a>
+    <a href="#" class="menuItem">Help</a>
+    <a href="#" class="menuItem">Forum</a>
+
+    <a href="#" class="menuItem">News</a>
+    <a href="#" class="menuItem">Artists</a>
+    <a href="#" class="menuItem">Contact us</a>
+
+    <a href="#" class="menuItem">Plastic art</a>
+    <a href="#" class="menuItem">Graphic art</a>
+
+    <a href="#" class="menuItem">Shop</a>
+    <a href="#" class="menuItem">Media</a>
+</div>
+
+<div id="pageContent">
+    @{
+        Html.RenderPartial("_ExhibitList", Model);
+    }
+</div>
+
+<div id="page-cover"></div>
+<div id="forumPlaceholder"></div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/home")
+}

@@ -1,0 +1,56 @@
+﻿@using TaskOperator.Web.Controllers
+@model TaskOperator.Web.Models.Tasks.TaskModel
+
+@{
+    AjaxOptions saveTaskOptions = TaskOperatorController.GetAjaxOptions("managerTaskForm",
+        Url.Action(TasksController.SaveManagerTaskAction, TasksController.ControllerName), "onSaveTaskSuccess");
+    using (Ajax.BeginForm(null, null, saveTaskOptions, new { id = "managerTaskForm" }))
+    {
+        <div id="left">
+            <div id="id">
+                @Html.LabelFor(x => x.Id)
+                @Html.DisplayTextFor(x => x.Id)
+            </div>
+
+            <div id="percentage">
+                @Html.LabelFor(x => x.Percentage)
+                @Html.DisplayTextFor(x => x.Percentage)%
+            </div>
+
+            <div id="state">
+                @Html.LabelFor(x => x.State)
+                @Html.DropDownListFor(x => x.StateString, Model.StateOptions)
+            </div>
+
+            <div id="worker">
+                @Html.Label("Worker")
+                @Html.DropDownListFor(x => x.Worker.IdString, Model.WorkerOptions)
+            </div>
+        </div>
+
+        <div id="right">
+            <div id="name">
+                @Html.LabelFor(x => x.Name, new {@class = ""})<br>
+                @Html.TextBoxFor(x => x.Name, new {id = "taskName"})<br><br>
+            </div><br>
+            <div id="content">
+                @Html.LabelFor(x => x.Content, new {@class = ""})<br>
+                @Html.TextAreaFor(x => x.Content, new {id = "taskContent"})<br><br>
+            </div>
+        </div>
+    
+        @Html.HiddenFor(x => x.Id)
+        @Html.HiddenFor(x => x.Percentage)
+        @Html.HiddenFor(x => x.Date)
+
+        <input type="submit" value="Save" name="submit_savetask" class="btn" id="saveTask">
+
+        AjaxOptions deleteOptions = TaskOperatorController.GetAjaxOptions("pageContent",
+            Url.Action(TasksController.DeleteTaskAction, TasksController.ControllerName, new { taskId = Model.Id, pageNumber = ViewBag.PageNumber }), "closeTask");
+        @Ajax.ActionLink("Delete", actionName: null, routeValues: null, ajaxOptions: deleteOptions, htmlAttributes: new {  id = "deleteBtn" })
+
+        <button type="button" class="btn" id="close" onclick="closeTask()">Close</button>
+        @Html.ValidationSummary(false)
+    }
+}
+

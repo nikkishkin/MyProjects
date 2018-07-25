@@ -1,0 +1,15 @@
+﻿@using TaskOperator.Web.Controllers
+@model TaskOperator.Web.Models.Tasks.AddTaskModel
+
+@{
+    AjaxOptions addTaskOptions = TaskOperatorController.GetAjaxOptions("addTaskForm",
+        Url.Action(TasksController.AddTaskAction, TasksController.ControllerName), "onAddTaskSuccess");
+    using (Ajax.BeginForm(null, null, addTaskOptions, new { id = "addTaskForm" }))
+    {
+        @Html.LabelFor(m => m.Name)<br>
+        @Html.TextBoxFor(m => m.Name, new { @class = "textInput" })
+        <br><br>
+        <input type="submit" value="Add task" name="submit_addtask" class="btn" id="addTaskBtn">
+        @Html.ValidationSummary(false)
+    }
+}

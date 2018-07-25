@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskOperatorModelStoreContainer" CdmEntityContainer="TaskOperatorEntities">
+    <EntitySetMapping Name="Attachment">
+      <EntityTypeMapping TypeName="TaskOperatorModel.Attachment">
+        <MappingFragment StoreEntitySet="Attachment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="TaskOperatorModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Task">
+      <EntityTypeMapping TypeName="TaskOperatorModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="IsDone" ColumnName="IsDone" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="TaskOperatorModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+          <ScalarProperty Name="AvatarPath" ColumnName="AvatarPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="WorkerTask" TypeName="TaskOperatorModel.WorkerTask" StoreEntitySet="WorkerTask">
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="TaskId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="WorkerId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<TaskOperator.Web.Models.Tasks.TaskModel>
+
+@foreach (var task in Model)
+{
+    <div class="taskEntry entry">
+        @task.Name
+    </div>
+}

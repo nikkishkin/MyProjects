@@ -1,0 +1,48 @@
+﻿@using TaskOperator.Entities.Enums
+@using TaskOperator.Web.Controllers
+@model TaskOperator.Web.Models.Tasks.TaskModel
+
+@{
+    AjaxOptions saveTaskOptions = TaskOperatorController.GetAjaxOptions("workerTaskForm",
+        Url.Action(TasksController.SaveWorkerTaskAction, TasksController.ControllerName), "onSaveTaskSuccess");
+    using (Ajax.BeginForm(null, null, saveTaskOptions, new { id = "workerTaskForm" }))
+    {
+        <div id="left">
+
+            <div id="percentage">
+                @Html.LabelFor(x => x.Percentage)
+                @Html.TextBoxFor(x => x.Percentage, new {id = "wrk-percentage"})%
+            </div>
+
+            <div id="state">
+                @Html.LabelFor(x => x.State) 
+                @Enum.GetName(typeof(TaskState), Model.State)
+            </div>
+
+            <div id="worker">
+                @Html.Label("Worker")
+                @Html.DisplayTextFor(x => x.Worker.Username)
+            </div>
+        </div>
+
+        <div id="right">
+            <div id="name">
+                @Html.LabelFor(x => x.Name, new {@class = ""})<br>
+                <span id="taskName">@Model.Name</span><br><br>
+            </div><br>
+            <div id="content">
+                @Html.LabelFor(x => x.Content, new {@class = ""})<br>
+                <span id="wrk-taskContent">
+                    @Html.DisplayTextFor(x => x.Content)
+                </span><br><br>
+            </div>
+        </div>
+
+        @Html.HiddenFor(x => x.Id);
+
+        <input type="submit" value="Save" name="submit_savetask" class="btn" id="saveTask">
+        <button type="button" class="btn" id="close" onclick="closeTask()">Close</button>
+        @Html.ValidationSummary(false)
+    }
+}
+

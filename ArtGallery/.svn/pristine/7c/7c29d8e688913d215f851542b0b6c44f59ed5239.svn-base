@@ -1,0 +1,26 @@
+﻿using System.Web.Mvc;
+using WorkWithJson.Models;
+using WorkWithJson.Models.Account;
+
+namespace WorkWithJson.Controllers
+{
+    public class AccountController : Controller
+    {
+        public const string ControllerName = "Account";
+
+        public const string LogInAction = "LogIn";
+        public const string SignUpAction = "SignUp";
+
+        [HttpPost]
+        public PartialViewResult LogIn(LogInModel logInModel)
+        {
+            return PartialView("_LogIn");
+        }
+
+        [HttpPost]
+        public PartialViewResult SignUp(SignUpModel signUpModel)
+        {
+            return PartialView("_SignUp");
+        }
+    }
+}

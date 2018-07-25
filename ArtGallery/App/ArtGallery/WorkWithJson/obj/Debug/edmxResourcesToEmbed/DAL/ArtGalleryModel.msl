@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ArtGalleryModelStoreContainer" CdmEntityContainer="ArtGalleryEntities">
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="ArtGalleryModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="ArtGalleryModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserRole" TypeName="ArtGalleryModel.UserRole" StoreEntitySet="UserRole">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

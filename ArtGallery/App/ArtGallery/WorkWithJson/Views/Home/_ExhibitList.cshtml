@@ -1,0 +1,55 @@
+﻿@using System.Web.Mvc.Ajax
+@using WorkWithJson.Controllers
+@model WorkWithJson.Models.Home.ExhibitListModel
+
+<ul id="exhibitList">
+    @foreach (var exhibit in Model.Exhibits)
+    {
+        <li>
+            <div class="pictureContainer">
+                <img src="@exhibit.Source" class="picture"/>
+            </div>
+            <div class="description">@exhibit.Description</div>
+            @if (ViewBag.IsAuthorized)
+            {
+                AjaxOptions getCommentsOptions = ExhibitionController.GetAjaxOptions("forumPlaceholder",
+                    Url.Action(ForumController.GetCommentsAction, ForumController.ControllerName, new { pictureIndex = exhibit.Index }), "onGetCommentsSuccess");
+                @Ajax.ActionLink("Comments", null, null, getCommentsOptions, new { @class = "forumLink" })
+            }
+        </li>
+    }
+</ul>
+
+<div id="pager">
+    @{
+        if (Model.PageNumber != 0)
+        {
+            AjaxOptions getPreviousOptions = ExhibitionController.GetAjaxOptions("pageContent",
+                Url.Action(HomeController.GetExhibitsAction, HomeController.ControllerName), "onGetExhibitsSuccess");
+
+            using (Ajax.BeginForm(HomeController.GetExhibitsAction, new { pageNumber = Model.PageNumber - 1 }, getPreviousOptions, new { @class = "pagingForm" }))
+            {
+                <input type="hidden" name="pageNumber" value="@(Model.PageNumber - 1)"/>
+                <input type="hidden" name="pageSize" value="" />
+                <input type="submit" value="previous" class="pagingLink" id="previous"/>
+            }
+        }
+
+        <span id="pageDescription">Page @(Model.PageNumber + 1) of @Model.PagesCount</span>
+
+        if (Model.NextPageExists)
+        {
+            AjaxOptions getNextOptions = ExhibitionController.GetAjaxOptions("pageContent",
+                Url.Action(HomeController.GetExhibitsAction, HomeController.ControllerName), "onGetExhibitsSuccess");
+
+            using (Ajax.BeginForm(HomeController.GetExhibitsAction, new { pageNumber = Model.PageNumber + 1 }, getNextOptions, new { @class = "pagingForm" }))
+            {
+                <input type="hidden" name="pageNumber" value="@(Model.PageNumber + 1)" />
+                <input type="hidden" name="pageSize" value="" />
+                <input type="submit" value="next" class="pagingLink" id="next"/>
+            }
+        }
+}
+</div>
+
+<input type="hidden" name="currentPageNumber" value="@Model.PageNumber">

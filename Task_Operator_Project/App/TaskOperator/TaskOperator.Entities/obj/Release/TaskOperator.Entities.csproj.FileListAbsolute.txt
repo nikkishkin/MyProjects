@@ -1,0 +1,10 @@
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\TaskOperator.Entities.dll.config
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\TaskOperator.Entities.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\TaskOperator.Entities.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\EntityFramework.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\EntityFramework.SqlServer.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\EntityFramework.xml
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Release\EntityFramework.SqlServer.xml
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\obj\Release\TaskOperator.Entities.csprojResolveAssemblyReference.cache
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\obj\Release\TaskOperator.Entities.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\obj\Release\TaskOperator.Entities.pdb

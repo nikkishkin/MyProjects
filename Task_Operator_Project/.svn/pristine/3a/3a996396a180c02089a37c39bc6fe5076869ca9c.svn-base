@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="header">
+    <button class="btn" id="popupSignUpBtn">Sign up</button>
+    <button class="btn" id="popupLogInBtn">Log in</button>
+
+    @{
+        Html.RenderPartial("~/Views/Account/_LogOut.cshtml");
+    }
+
+    @*<button class="btn" id="logOutBtn">Log out</button>*@
+</div>
+
+<div id="authPlaceholder">
+    @{
+        Html.RenderPartial("~/Views/Account/_LogIn.cshtml");
+        Html.RenderPartial("~/Views/Account/_SignUp.cshtml");
+    }
+</div>
+
+<div id="pageContent">
+    @{
+        Html.RenderPartial("_Intro");
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/home")
+    @*@Scripts.Render("~/bundles/managertasks")*@
+    @*@Scripts.Render("~/bundles/ajax")*@
+}

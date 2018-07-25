@@ -1,0 +1,27 @@
+﻿@using TaskOperator.Entities.Enums
+@using TaskOperator.Web.Controllers
+@using TaskOperator.Web.Models.Tasks
+@model IEnumerable<TaskModel>
+
+@foreach (var task in Model)
+{
+    <div class="taskEntry entry">
+        <span class="wrk-taskPercentage">@(task.Percentage)%</span>
+        @{
+            AjaxOptions getTaskOptions = TaskOperatorController.GetAjaxOptions("taskPlaceholder",
+                Url.Action(TasksController.GetWorkerTaskAction, TasksController.ControllerName, 
+                    new {taskId = task.Id}), "dimBackground");
+        }
+        @Ajax.ActionLink(task.Name, null, null, getTaskOptions, new {@class = "wrk-taskName clipped"})
+
+        <span class="wrk-taskState clipped">@(((TaskState) task.State).ToString())</span>
+    </div>
+}
+
+<div id="page-cover">
+    <div id="taskPlaceholder"></div>
+</div>
+
+@{
+    Html.RenderPartial("~/Views/Tasks/_Pager.cshtml");
+}

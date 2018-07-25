@@ -1,0 +1,5 @@
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Core\bin\Debug\TaskOperator.Core.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Core\bin\Debug\TaskOperator.Core.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Core\obj\Debug\TaskOperator.Core.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Core\obj\Debug\TaskOperator.Core.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Core\obj\Debug\TaskOperator.Core.csprojResolveAssemblyReference.cache

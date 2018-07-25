@@ -1,0 +1,18 @@
+﻿@using TaskOperator.Web.Controllers
+@model TaskOperator.Web.Models.Account.LogInModel
+
+@{
+    AjaxOptions logInOptions = TaskOperatorController.GetAjaxOptions("logInForm",
+        Url.Action(AccountController.LogInAction, AccountController.ControllerName), "onLogInSuccess");
+    using (Ajax.BeginForm(null, null, logInOptions, new {id = "logInForm"}))
+    {
+        @Html.LabelFor(x => x.Username)<br>
+        @Html.TextBoxFor(x => x.Username, new {@class = "textInput"})
+        <br>
+        @Html.LabelFor(x => x.Password)<br>
+        @Html.PasswordFor(x => x.Password, new {@class = "textInput"})
+        <br><br>
+        <input type="submit" value="Log in" name="submit_authorize" class="btn">
+        @Html.ValidationSummary(false)
+    }
+}

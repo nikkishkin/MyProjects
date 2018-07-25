@@ -1,0 +1,140 @@
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web.Caching;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using WorkWithJson.Models;
+using WorkWithJson.Models.Home;
+
+namespace WorkWithJson.Controllers
+{
+    public class HomeController : ExhibitionController
+    {
+        public const string ControllerName = "Home";
+
+        public const string IndexAction = "Index";
+        public const string GetExhibitsAction = "GetExhibits";
+
+        private const int PageSize = 4;
+
+        private const string FilePath = @"~\App_Data\pictures.json";
+        private const string CacheStorageJsonArray = "JsonArray";
+
+        //
+        // GET: /Home/
+        public ViewResult Index(int pageNumber = 0)
+        {
+            if (HttpContext.Cache[CacheStorageJsonArray] == null)
+            {
+                string path = Server.MapPath(FilePath);
+
+                string jsonArrayString;
+                try
+                {
+                    jsonArrayString = System.IO.File.ReadAllText(path);
+                }
+                catch (FileNotFoundException)
+                {
+                    return View("Error");
+                }                
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                object[] jsonArray = serializer.Deserialize<object[]>(jsonArrayString);
+
+                HttpContext.Cache.Insert(CacheStorageJsonArray, jsonArray, new CacheDependency(path));
+            }
+
+            return View(GetExhibitListModel(PageSize, pageNumber));       
+        }
+
+        private IEnumerable<ExhibitModel> GetExhibitModels(int pageNumber, int pageSize)
+        {
+            return
+                ((object[])HttpContext.Cache[CacheStorageJsonArray]).Skip(pageNumber * pageSize)
+                    .Take(pageSize)
+                    .Select(ToExhibitModel);
+        } 
+
+        private ExhibitModel ToExhibitModel(object jsonObj)
+        {
+            Dictionary<string, object> dict = (Dictionary<string, object>) jsonObj;
+            ExhibitModel result = new ExhibitModel
+            {
+                Source = (string) dict["source"],
+                Description = (string) dict["description"]
+            };
+            return result;
+        }
+
+        private int GetPagesCount(int pageSize)
+        {
+            int itemsCount = ((object[])HttpContext.Cache[CacheStorageJsonArray]).Count();
+            int result = itemsCount / pageSize;
+            if (itemsCount % pageSize != 0)
+            {
+                result++;
+            }
+            return result;
+        }
+
+        private ExhibitListModel GetExhibitListModel(int pageSize, int pageNumber)
+        {
+            return new ExhibitListModel
+            {
+                Exhibits = GetExhibitModels(pageNumber, pageSize),
+                NextPageExists = pageNumber < (GetPagesCount(pageSize) - 1),
+                PageNumber = pageNumber,
+                PagesCount = GetPagesCount(pageSize)
+            };
+        }
+
+        private int GetCorrectPageNumber(int pageNumber, int pageSize)
+        {
+            if (pageNumber >= GetPagesCount(pageSize))
+            {
+                pageNumber = GetPagesCount(pageSize) - 1;
+            }
+            return pageNumber;
+        }
+
+        public ActionResult GetExhibits(int pageNumber, int pageSize = PageSize)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                pageNumber = GetCorrectPageNumber(pageNumber, pageSize);
+
+                return PartialView("_ExhibitList", GetExhibitListModel(pageSize, pageNumber));
+            }
+
+            pageNumber = GetCorrectPageNumber(pageNumber, PageSize);
+
+            if (Request.HttpMethod == "POST")
+            {
+                return RedirectToAction("Index", new { pageNumber });
+            }
+
+            return View("Index", GetExhibitListModel(PageSize, pageNumber));
+        }
+
+        public JsonResult GetExhibitsJson(int pageNumber, int pageSize)
+        {
+            if (pageNumber >= GetPagesCount(pageSize))
+            {
+                pageNumber = GetPagesCount(pageSize) - 1;
+            }
+
+            IEnumerable<object> exhibits =
+                ((object[])HttpContext.Cache["JsonArray"]).Skip(pageNumber * pageSize).Take(pageSize);
+
+            object paging = new
+            {
+                pagesCount = GetPagesCount(pageSize),
+                nextPageExists = pageNumber < (GetPagesCount(pageSize) - 1),
+                pageNumber
+            };
+
+            return Json(new { exhibits, paging }, JsonRequestBehavior.AllowGet);
+        }
+    }
+}

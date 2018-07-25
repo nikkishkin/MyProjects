@@ -1,0 +1,47 @@
+﻿using System.Collections.Generic;
+using TaskOperator.Core;
+using TaskOperator.DAL.Repository;
+using TaskOperator.Entities;
+
+namespace TaskOperator.Logic.Services
+{
+    public class UserBlo
+    {
+        private readonly UserRepository _userRepository;
+
+        public UserBlo(IUnitOfWork unitOfWork)
+        {
+            _userRepository = new UserRepository(unitOfWork);
+        }
+
+        public User GetUser(int id)
+        {
+            return _userRepository.GetUser(id);
+        }
+
+        public User GetUser(string username)
+        {
+            return _userRepository.GetUser(username.Trim());
+        }
+
+        public bool UserExists(string username)
+        {
+            return _userRepository.UserExists(username.Trim());
+        }
+
+        public void AddUser(User user)
+        {
+            _userRepository.AddUser(user);
+        }
+
+        public IEnumerable<User> GetFreeWorkers()
+        {
+            return _userRepository.GetFreeWorkers();
+        }
+
+        public bool IsFreeWorker(int id)
+        {
+            return _userRepository.IsFreeWorker(id);
+        }
+    }
+}

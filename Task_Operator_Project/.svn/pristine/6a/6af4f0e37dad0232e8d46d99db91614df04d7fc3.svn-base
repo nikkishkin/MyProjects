@@ -1,0 +1,29 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using TaskOperator.Core;
+using TaskOperator.DAL.UnitOfWork;
+using TaskOperator.Entities;
+
+namespace TaskOperator.DAL.Repository
+{
+    public class AttachmentRepository
+    {
+        private readonly IEntityFrameworkUnitOfWork _unitOfWork;
+
+        public AttachmentRepository(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = (IEntityFrameworkUnitOfWork)unitOfWork;
+        }
+
+        public void AddAttachment(Attachment attachment)
+        {
+            _unitOfWork.GetContext().Attachment.Add(attachment);
+            _unitOfWork.GetContext().SaveChanges();
+        }
+
+        public IEnumerable<Attachment> GetTaskAttachments(int taskId)
+        {
+            return _unitOfWork.GetContext().Attachment.Where(a => a.TaskId == taskId);
+        }
+    }
+}

@@ -1,0 +1,53 @@
+﻿@using WorkWithJson.Controllers
+@using WorkWithJson.Models.Forum
+@model ForumModel
+
+<div id="commentsPopup">
+    <div id="commentList">
+        @foreach (var comment in Model.Comments.Take(Model.Comments.Count() - 1))
+        {
+            <div class="comment">
+                <span class="commentContent clipped">@comment.Content</span>
+                <span class="commentUser clipped">(@comment.Username)</span>
+                @if (ViewBag.IsAdmin)
+                {
+                    AjaxOptions deleteCommentOptions = ExhibitionController.GetAjaxOptions("forumPlaceholder",
+                        Url.Action(ForumController.DeleteCommentAction, ForumController.ControllerName,
+                        new { commentIndex = comment.Index, pictureIndex = Model.PictureIndex }), "onDeleteCommentSuccess");
+                    @Ajax.ActionLink("Delete", null, null, deleteCommentOptions, new { @class = "btn deleteLink" })
+                }
+            </div>
+            <hr class="style-six">
+        }
+
+        @if (Model.Comments.Any())
+        {
+            CommentModel lastComment = Model.Comments.ElementAt(Model.Comments.Count() - 1);
+            <div class="comment">
+                <span class="commentContent clipped">@lastComment.Content</span>
+                <span class="commentUser clipped">(@lastComment.Username)</span>
+                @if (ViewBag.IsAdmin)
+                {
+                    AjaxOptions deleteCommentOptions = ExhibitionController.GetAjaxOptions("forumPlaceholder",
+                        Url.Action(ForumController.DeleteCommentAction, ForumController.ControllerName,
+                        new { commentIndex = lastComment.Index, pictureIndex = Model.PictureIndex }), "onDeleteCommentSuccess");
+                    @Ajax.ActionLink("Delete", null, null, deleteCommentOptions, new { @class = "btn deleteLink" })
+                }
+            </div>
+        }
+
+        <div id="commentContentHelper"></div>
+    </div>
+    @{
+        Html.RenderPartial("_AddComment", new CommentModel { PictureIndex = Model.PictureIndex });
+    }
+</div>
+
+@*<div id="forumExhibit">
+    <div class="pictureContainer">
+        <img src="@Model.Exhibit.Source" class="picture"/>
+    </div>
+    <div class="description">@Model.Exhibit.Description</div>
+</div>*@
+
+

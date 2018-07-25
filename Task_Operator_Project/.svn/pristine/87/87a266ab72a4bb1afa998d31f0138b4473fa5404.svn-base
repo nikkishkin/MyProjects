@@ -1,0 +1,61 @@
+
+            return new List<SelectListItem>
+            {
+                new SelectListItem{Value = "0", Text = "Open"},
+                new SelectListItem{Value = "1", Text = "Assigned"},
+                new SelectListItem{Value = "2", Text = "Complete"}
+            };
+
+        private byte GetInterpretedState(string state)
+        {
+            switch (state)
+            {
+                case "Open":
+                    return 0;
+                case "Assigned":
+                    return 1;
+                case "Completed":
+                    return 2;
+            }
+            throw new InvalidOperationException("State not recognized");
+        }    
+	
+	
+	
+	
+	//$("#popupBtn").click(function (event) {
+    //    if ($("#logInForm").is(":visible")) {
+    //        $("#logInForm").hide();
+    //        $(document).off("click", hidePopupHandler);
+    //    } else {
+    //        $("#logInForm").show();
+    //        event.stopPropagation();
+    //        $(document).click(hidePopupHandler);
+    //    }
+    //});
+
+(function() {
+    $(document).ready(function() {
+        $("#logInForm").hide();
+        $("#popupLogInBtn").click(showPopupHandler);
+    });
+
+    function showPopupHandler(event) {
+        $("#logInForm").show();
+        event.stopPropagation();
+        $(document).click(hidePopupHandler);
+
+        $("#popupLogInBtn").off("click", showPopupHandler);
+    }
+
+    function hidePopupHandler(event) {
+
+        if ($(event.target).closest("#logInFormPlaceholder").length === 0) {
+            // hide
+            $("#logInForm").hide();
+            $(document).off("click", hidePopupHandler);
+
+            $("#popupLogInBtn").click(showPopupHandler);
+        }
+    }
+})();

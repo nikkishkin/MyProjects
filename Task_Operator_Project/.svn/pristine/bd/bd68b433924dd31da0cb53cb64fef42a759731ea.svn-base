@@ -1,0 +1,27 @@
+﻿using System.Collections.Generic;
+using TaskOperator.Core;
+using TaskOperator.DAL.Repository;
+using TaskOperator.Entities;
+
+namespace TaskOperator.Logic.Services
+{
+    public class AttachmentBlo
+    {
+        private readonly AttachmentRepository _attachmentRepository;
+
+        public AttachmentBlo(IUnitOfWork unitOfWork)
+        {
+            _attachmentRepository = new AttachmentRepository(unitOfWork);
+        }
+
+        public IEnumerable<Attachment> GetTaskAttachments(int taskId)
+        {
+            return _attachmentRepository.GetTaskAttachments(taskId);
+        }
+
+        public void AddAttachment(Attachment attachment)
+        {
+            // TODO: write implementation
+        }
+    }
+}

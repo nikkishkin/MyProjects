@@ -1,0 +1,23 @@
+﻿@using TaskOperator.Web.Controllers
+
+<div id="pager">
+    @{
+        if (ViewBag.PageNumber != 0)
+        {
+            AjaxOptions getPreviousOptions = TaskOperatorController.GetAjaxOptions("pageContent",
+                Url.Action(TasksController.GetTasksAction, TasksController.ControllerName, new { pageNumber = ViewBag.PageNumber - 1 }));
+            @Ajax.ActionLink("previous", null, null, getPreviousOptions, new { @class = "pagingLink", id = "previous" })
+        }
+
+        <text>Page @(ViewBag.PageNumber + 1) of @ViewBag.PagesCount</text>
+
+        if (ViewBag.NextPageExists)
+        {
+            AjaxOptions getNextOptions = TaskOperatorController.GetAjaxOptions("pageContent",
+                Url.Action(TasksController.GetTasksAction, TasksController.ControllerName, new { pageNumber = ViewBag.PageNumber + 1 }));
+            @Ajax.ActionLink("next", null, null, getNextOptions, new { @class = "pagingLink", id = "next" })
+        }
+    }
+</div>
+
+<input type="hidden" name="pageNumber" value="@ViewBag.PageNumber">

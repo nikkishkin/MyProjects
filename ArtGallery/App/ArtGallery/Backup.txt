@@ -1,0 +1,111 @@
+{ "source": "C:\\XIS\\6 sem\\Filos\\OtNclCyZIqk.jpg", "description" : "This is nature" }
+
+//---------------------------------------
+var content = "<ul>" + items.join("") + "</ul>";
+
+var pager = "<div id='pager'>";
+if (data.paging.pageNumber !== 0) {
+    pager += "<a href='Home/GetExhibits?pageNumber=" + (data.paging.pageNumber - 1) + "' id='previous'>previous</a>";
+}
+pager += "Page " + (data.paging.pageNumber + 1) + " of " + data.paging.pagesCount;
+if (data.paging.nextPageExists !== 0) {
+    pager += "<a href='Home/GetExhibits?pageNumber=" + (data.paging.pageNumber + 1) + "' id='next'>next</a>";
+}
+
+$("#pageContent").html(content + pager);
+
+//---------------------------------------
+if (data.paging.pageNumber === 0) {
+    $("#previous").hide();
+} else {
+    $("#previous").show();
+}
+
+if (data.paging.nextPageExists === true) {
+    $("#next").show();
+} else {
+    $("#next").hide();
+}
+
+//---------------------------------------
+@{
+    ViewBag.Title = "Index";
+}
+
+<ul id="exhibitList"><li/></ul>
+
+<div id="pager"></div>
+
+<input type="hidden" name="pageNumber" value="">
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/home")
+}
+
+//---------------------------------------
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">           
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Choose mode <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="usePartial">Use partial view</a></li>
+                        <li><a href="#" id="useJson">Use JSON</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+//---------------------------------------
+if ($("#modeForm").is(":visible")) {
+    $("#modeForm").hide();
+} else {
+    $("#modeForm").show();
+    $(document).click(hidePopupHandler);
+}
+
+//---------------------------------------
+public class UserPrincipal : IPrincipal
+{
+    public IIdentity Identity { get; private set; }
+    public bool IsInRole(string role)
+    {
+        if (Roles.Any(role.Contains))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public UserPrincipal(string username)
+    {
+        Identity = new GenericIdentity(username);
+    }
+
+    public int UserId { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string[] Roles { get; set; }
+}
+
+//---------------------------------------
+private IEnumerable<ExhibitModel> GetExhibitModels(int pageNumber, int pageSize)
+{
+    List<ExhibitModel> result = new List<ExhibitModel>();
+
+    object[] jsonArray = (object[]) HttpContext.Cache[CacheStorageJsonArray];
+    for (int i = pageNumber * pageSize; i < (pageNumber + 1) * pageSize; i++)
+    {
+        result.Add(ToExhibitModel(jsonArray[i], i));
+    }
+
+    return
+        ((object[])HttpContext.Cache[CacheStorageJsonArray]).Skip(pageNumber * pageSize)
+            .Take(pageSize)
+            .Select(ToExhibitModel);
+} 

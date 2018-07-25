@@ -1,0 +1,9 @@
+﻿@model IEnumerable<TaskOperator.Web.Models.Tasks.TaskModel>
+
+@foreach (var task in Model)
+{
+    <div class="taskEntry entry">
+        @*@Html.ActionLink(task.Name, TasksController.DetailsAction, new { taskId = task.Id })*@
+        @task.Name
+    </div>
+}

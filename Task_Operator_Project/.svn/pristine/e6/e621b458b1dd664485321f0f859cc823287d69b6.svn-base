@@ -1,0 +1,47 @@
+﻿@using TaskOperator.Web.Controllers
+@{
+    ViewBag.Title = "Index";
+}
+
+<span id="auth">@ViewBag.IsAuthorized</span>
+
+<div class="header">
+    @if (ViewBag.IsAuthorized == "0")
+    {
+        <button class="btn" id="popupSignUpBtn">Sign up</button>
+        <button class="btn" id="popupLogInBtn">Log in</button>
+    }
+
+    <form action="@Url.Action(AccountController.LogOutAction, AccountController.ControllerName)" method="post" id="logOutForm">
+        <input type="submit" value="Log out" name="submit_logout" class="btn" id="logOutBtn">
+    </form>
+
+    @*@{
+        Html.RenderPartial("~/Views/Account/_LogOut.cshtml");
+    }*@
+
+    @*<button class="btn" id="logOutBtn">Log out</button>*@
+</div>
+
+<div id="authPlaceholder">
+    @{
+        Html.RenderPartial("~/Views/Account/_LogIn.cshtml");
+        Html.RenderPartial("~/Views/Account/_SignUp.cshtml");
+    }
+</div>
+
+<div id="pageContent">
+    @if (ViewBag.IsAuthorized == "0")
+    {
+        Html.RenderPartial("_Intro");
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/home")
+    @*@Scripts.Render("~/bundles/managertasks")*@
+    @*@Scripts.Render("~/bundles/ajax")*@
+}

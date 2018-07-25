@@ -1,0 +1,176 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Web.Mvc;
+using TaskOperator.Core;
+using TaskOperator.Entities;
+using TaskOperator.Entities.Enums;
+using TaskOperator.Logic.Services;
+using TaskOperator.Web.Models;
+using TaskOperator.Web.Models.Tasks;
+
+namespace TaskOperator.Web.Controllers
+{
+    public class TasksController : TaskOperatorController
+    {
+        public const string ControllerName = "Tasks";
+
+        public const string ManagerTasksAction = "ManagerTasks";
+        public const string WorkerTasksAction = "WorkerTasks";
+        public const string AddTaskAction = "AddTask";
+        public const string SaveManagerTaskAction = "SaveManagerTask";
+        public const string GetManagerTaskAction = "GetManagerTask";
+
+        private readonly TaskBlo _taskBlo;
+        private readonly UserBlo _userBlo;
+
+        public TasksController()
+        {
+            _taskBlo = new TaskBlo(UnitOfWork);
+            _userBlo = new UserBlo(UnitOfWork);
+        }
+
+        [HttpPost]
+        public PartialViewResult GetTasks()
+        {
+            IEnumerable<TaskModel> tasks;
+            if (UserPrincipal.CurrentPrincipal.IsManager)
+            {
+                // User is manager
+                tasks = _taskBlo.GetAllTasks()
+                    .Select(t => new TaskModel
+                    {
+                        Name = t.Name, 
+                        Id = t.Id,
+                        State = t.State,
+                        Content = t.Content,
+                        Percentage = t.Percentage,
+                        Date = t.Date.ToString(CultureInfo.CurrentCulture),
+                        Worker = GetUserModel(t),
+                        IsAssigned = (TaskState)t.State != TaskState.Open
+                    });
+                return PartialView("_ManagerTasks", tasks);
+            }
+
+            tasks = _taskBlo.GetWorkerTasks(UserPrincipal.CurrentPrincipal.UserId)
+                .Select(t => new TaskModel
+                {
+                    Name = t.Name,
+                    Id = t.Id,
+                    State = t.State,
+                    Content = t.Content,
+                    Percentage = t.Percentage,
+                    Date = t.Date.ToString(CultureInfo.CurrentCulture),
+                    Worker = GetUserModel(t),
+                    IsAssigned = (TaskState)t.State != TaskState.Open
+                });
+            return PartialView("_WorkerTasks", tasks);
+        }
+
+        private UserModel GetUserModel(Task task)
+        {
+            if (task.State == 0)
+            {
+                // Task is open and has no workers
+                return null;
+            }
+
+            User worker = _taskBlo.GetTaskWorker(task);
+            return new UserModel
+            {
+                FullName = worker.First_Name + " " + worker.Last_Name,
+                Id = worker.Id,
+                Username = worker.Username
+            };
+        }
+
+        [HttpPost]
+        public PartialViewResult AddTask(AddTaskModel taskModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _taskBlo.CreateTask(taskModel.Name);
+            }
+
+            return PartialView("_AddTask");
+        }
+
+        //[HttpPost]
+        public PartialViewResult GetManagerTask(int taskId)
+        {
+            Task task = _taskBlo.GetTask(taskId);
+
+            TaskModel model = new TaskModel
+            {
+                Name = task.Name,
+                Id = task.Id,
+                State = task.State,
+                Content = task.Content,
+                Percentage = task.Percentage,
+                Date = task.Date.ToString(CultureInfo.CurrentCulture),
+                Worker = GetUserModel(task),
+                IsAssigned = (TaskState) task.State != TaskState.Open
+            };
+
+            FillCollections(model);
+
+            return PartialView("_ManagerTask", model);
+        }
+
+        private void FillCollections(TaskModel model)
+        {
+            model.FreeWorkers = GetFreeWorkers(model);
+            model.StateOptions = GetStateOptions();
+        }
+
+        private List<SelectListItem> GetFreeWorkers(TaskModel model)
+        {
+            List<SelectListItem> freeWorkers = new List<SelectListItem>();
+            freeWorkers.AddRange(_userBlo.GetFreeWorkers().Select(w => new SelectListItem {Text = w.Username, Value = w.Id.ToString()}));
+            if (model.Worker == null)
+            {
+                // Task is open and has no workers
+                freeWorkers.Add(new SelectListItem {Text = "No user", Value = "-1", Selected = true});
+            }
+            else
+            {
+                User dbUser = _userBlo.GetUser(model.Worker.Id);
+                freeWorkers.Add(new SelectListItem {Text = dbUser.Username, Value = dbUser.Id.ToString(), Selected = true});
+            }
+            return freeWorkers;
+        }
+
+        private static IEnumerable<SelectListItem> GetStateOptions()
+        {
+            return Enum.GetValues(typeof (TaskState)).Cast<TaskState>().Select(x => new SelectListItem
+            {
+                Value = ((byte) x).ToString(),
+                Text = x.ToString()
+            });
+        }
+
+        [HttpPost]
+        public PartialViewResult SaveManagerTask(TaskModel taskModel)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    _taskBlo.CreateTask(taskModel.Name);
+            //}
+
+            FillCollections(taskModel);
+
+            if ((TaskState)taskModel.State == TaskState.Open && taskModel.Worker.Id != -1)
+            {
+                ModelState.AddModelError("StateString", "State cannot be 'open' because task is assigned to worker");
+            }
+            else
+            {
+                _taskBlo.SaveManagerTask(taskModel.Id, taskModel.Name, taskModel.Content,
+                                         taskModel.State, taskModel.Worker.Id);
+            }
+
+            return PartialView("_ManagerTask", taskModel);
+        }
+    }
+}

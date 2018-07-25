@@ -1,0 +1,14 @@
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.DAL.dll.config
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.DAL.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.DAL.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\EntityFramework.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.Core.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.Entities.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.Core.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\TaskOperator.Entities.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\EntityFramework.xml
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\obj\Release\TaskOperator.DAL.csprojResolveAssemblyReference.cache
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\obj\Release\TaskOperator.DAL.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.DAL\obj\Release\TaskOperator.DAL.pdb

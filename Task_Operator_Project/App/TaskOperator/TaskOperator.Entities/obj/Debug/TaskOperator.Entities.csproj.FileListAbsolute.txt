@@ -1,0 +1,9 @@
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\TaskOperator.Entities.dll.config
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\TaskOperator.Entities.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\TaskOperator.Entities.pdb
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\EntityFramework.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\EntityFramework.xml
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\obj\Debug\TaskOperator.Entities.dll
+C:\XIS\6 sem\EpamMy\FinalProject\App\TaskOperator\TaskOperator.Entities\obj\Debug\TaskOperator.Entities.pdb

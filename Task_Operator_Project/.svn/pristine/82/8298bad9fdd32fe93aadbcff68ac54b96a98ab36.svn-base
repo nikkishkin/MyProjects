@@ -1,0 +1,31 @@
+﻿@using TaskOperator.Entities.Enums
+@using TaskOperator.Web.Controllers
+@using TaskOperator.Web.Models.Tasks
+@model IEnumerable<TaskModel>
+
+@foreach (var task in Model)
+{
+    <div class="taskEntry entry">
+        <span class="taskId clipped">@task.Id</span>
+
+        @{
+            AjaxOptions getTaskOptions = TaskOperatorController.GetAjaxOptions("taskPlaceholder",
+                Url.Action(TasksController.GetManagerTaskAction, TasksController.ControllerName, new { taskId = task.Id }), "dimBackground");
+        }
+        @Ajax.ActionLink(task.Name, null, null, getTaskOptions, new { @class = "taskName clipped" })
+
+        <span class="taskState clipped">@(((TaskState) task.State).ToString())</span>
+        @if (task.IsAssigned)
+        {
+            <span class="taskWorker clipped">@task.Worker.Username</span>
+        }
+        else
+        {
+            <span class="taskWorker clipped">No users!</span>
+        }
+    </div>
+}
+
+@{
+    Html.RenderPartial("~/Views/Tasks/_AddTask.cshtml", new AddTaskModel());
+}

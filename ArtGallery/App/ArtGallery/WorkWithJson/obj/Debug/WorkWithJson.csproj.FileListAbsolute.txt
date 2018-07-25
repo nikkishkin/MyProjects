@@ -1,0 +1,100 @@
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\WorkWithJson.dll.config
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\WorkWithJson.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\WorkWithJson.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\Antlr3.Runtime.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\EntityFramework.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\Microsoft.Web.Infrastructure.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\Newtonsoft.Json.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Net.Http.Formatting.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Http.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Http.WebHost.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Mvc.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Optimization.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Providers.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Razor.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.WebPages.Deployment.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.WebPages.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.WebPages.Razor.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\WebGrease.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\EntityFramework.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\Newtonsoft.Json.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Net.Http.Formatting.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Http.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Http.WebHost.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Mvc.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.Razor.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.WebPages.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.WebPages.Deployment.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\bin\System.Web.WebPages.Razor.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\obj\Debug\WorkWithJson.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\obj\Debug\WorkWithJson.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers\WorkWithJson\obj\Debug\WorkWithJson.csprojResolveAssemblyReference.cache
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\WorkWithJson.dll.config
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\WorkWithJson.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\WorkWithJson.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\Antlr3.Runtime.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\EntityFramework.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\Microsoft.Web.Infrastructure.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\Newtonsoft.Json.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Net.Http.Formatting.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Http.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Http.WebHost.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Mvc.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Optimization.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Providers.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Razor.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.WebPages.Deployment.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.WebPages.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.WebPages.Razor.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\WebGrease.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\EntityFramework.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\Newtonsoft.Json.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Net.Http.Formatting.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Http.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Http.WebHost.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Mvc.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.Razor.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.WebPages.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.WebPages.Deployment.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\bin\System.Web.WebPages.Razor.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\obj\Debug\WorkWithJson.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\obj\Debug\WorkWithJson.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\WorkWithHandlers - Copy\WorkWithJson\obj\Debug\WorkWithJson.csprojResolveAssemblyReference.cache
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\WorkWithJson.dll.config
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\WorkWithJson.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\WorkWithJson.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\Antlr3.Runtime.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\EntityFramework.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\Microsoft.Web.Infrastructure.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\Newtonsoft.Json.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Net.Http.Formatting.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Http.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Http.WebHost.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Mvc.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Optimization.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Razor.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.WebPages.Deployment.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.WebPages.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.WebPages.Razor.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\WebGrease.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\EntityFramework.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\Newtonsoft.Json.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Net.Http.Formatting.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Http.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Http.WebHost.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Mvc.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.Razor.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.WebPages.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.WebPages.Deployment.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\System.Web.WebPages.Razor.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\obj\Debug\WorkWithJson.csprojResolveAssemblyReference.cache
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\obj\Debug\WorkWithJson.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\obj\Debug\WorkWithJson.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\BCrypt.Net.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\EntityFramework.SqlServer.dll
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\BCrypt.Net.pdb
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\BCrypt.Net.xml
+C:\XIS\6 sem\EpamMy\Lab .NET\ArtGallery\App\ArtGallery\WorkWithJson\bin\EntityFramework.SqlServer.xml

@@ -1,0 +1,1 @@
+Для запуска проекта в файле PicturesGallery\Web.config нужно заменить "NIK-PC\MSSQLSERVER2012" на имя локального SQL-сервера.
